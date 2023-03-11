@@ -1,0 +1,7 @@
+.rangeValue {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 10px;
+  text-align: center;
+}

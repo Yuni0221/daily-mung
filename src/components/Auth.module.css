@@ -1,0 +1,17 @@
+.googleButton {
+  width: 194px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid #6fffc4;
+  background-color: white;
+  border-radius: 14px;
+}
+
+.googleButton:hover {
+  width: 194px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid #6fffc4;
+  background-color: #6fffc4;
+  border-radius: 14px;
+}

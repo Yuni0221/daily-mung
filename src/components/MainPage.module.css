@@ -1,0 +1,10 @@
+.list {
+  list-style: none;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration-line: none;
+  text-decoration: none;
+  color: black;
+}

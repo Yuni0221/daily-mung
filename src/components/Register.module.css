@@ -1,0 +1,83 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+input[type="file"]::file-selector-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100px;
+  height: 24px;
+  border: 1px solid #6fffc4;
+  border-radius: 14px;
+  background-color: #fff;
+}
+
+input[type="file"]::file-selector-button:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 24px;
+  border: 1px solid #6fffc4;
+  border-radius: 14px;
+  background-color: #6fffc4;
+}
+
+.fileUpload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: gray;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.name {
+  width: 194px;
+  height: 30px;
+  margin-top: 30px;
+  border: 1px solid #6fffc4;
+  border-radius: 14px;
+  padding: 2px 6px;
+}
+
+.labeled {
+  margin-top: 20px;
+}
+
+input[type="radio"] {
+  accent-color: gray;
+}
+
+.regist {
+  width: 194px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid #6fffc4;
+  background-color: #6fffc4;
+  border-radius: 14px;
+}
+
+.regist:hover {
+  width: 194px;
+  height: 30px;
+  margin-top: 20px;
+  border: 1px solid #6fffc4;
+  background-color: white;
+  border-radius: 14px;
+}
