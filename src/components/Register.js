@@ -17,7 +17,6 @@ function Register() {
   const navigate = useNavigate();
 
   const onChangeName = ({ target: { value } }) => {
-    g;
     setName(value);
   };
 
