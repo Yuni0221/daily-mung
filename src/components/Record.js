@@ -27,21 +27,18 @@ function Record() {
 
   const onWeightChange = (e) => {
     setWeight(e.target.value);
-    console.log(e.target.value);
   };
 
   const onMealChange = (e) => {
     setMeal(e.target.value);
-    console.log(e.target.value);
   };
 
   const onDrinkChange = (e) => {
     setDrink(e.target.value);
-    console.log(e.target.value);
   };
 
   const onTimeChange = (e) => {
-    console.log(e.target.value);
+    setTime(e.target.value);
   };
 
   const onSubmitRecord = async (e) => {
@@ -55,42 +52,50 @@ function Record() {
   };
   return (
     <>
-      <form onSubmit={onSubmitRecord}>
-        <div>Record the weight</div>
-        <input type="number" step="0.01" onChange={onWeightChange}></input>
-        <span> kg</span>
-        <div>How much did you ate?</div>
-        <input type="number" onChange={onMealChange}></input>
-        <span> times</span>
-        <div>How much did you drink?</div>
-        <input
-          type="range"
-          min={MIN}
-          max={MAX}
-          value={drink}
-          step="100"
-          onChange={onDrinkChange}
-        ></input>
-        <span className={styles.rangeValue}>{`${drink}ml`}</span>
-        <div>
-          <div>Record the walk time</div>
+      <div className={styles.cotainer}>
+        <form className={styles.form} onSubmit={onSubmitRecord}>
+          <div>Record the weight</div>
+          <input
+            name="weight"
+            type="number"
+            step="0.01"
+            value={weight}
+            onChange={onWeightChange}
+          ></input>
+          <span> kg</span>
+          <div>How much did you ate?</div>
+          <input type="number" onChange={onMealChange}></input>
+          <span> times</span>
+          <div>How much did you drink?</div>
+          <input
+            type="range"
+            min={MIN}
+            max={MAX}
+            value={drink}
+            step="100"
+            onChange={onDrinkChange}
+          ></input>
+          <span className={styles.rangeValue}>{`${drink}ml`}</span>
           <div>
-            <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-            <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-            <span>{("0" + Math.floor((time / 10) % 100)).slice(-2)}</span>
+            <div>Record the walk time</div>
+            <div>
+              <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+              <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+              <span>{("0" + Math.floor((time / 10) % 100)).slice(-2)}</span>
+            </div>
+            <button type="button" onClick={() => setRunning(true)}>
+              start
+            </button>
+            <button type="button" onClick={() => setRunning(false)}>
+              stop
+            </button>
           </div>
-          <button type="button" onClick={() => setRunning(true)}>
-            start
-          </button>
-          <button type="button" onClick={() => setRunning(false)}>
-            stop
-          </button>
-        </div>
-        <div>
-          <input type="submit" value="기록하기"></input>
-        </div>
-      </form>
-      <></>
+          <div>
+            <input type="submit" value="기록하기"></input>
+          </div>
+        </form>
+        <></>
+      </div>
     </>
   );
 }

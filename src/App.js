@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import CarePage from "./components/CarePage";
 import DiaryPage from "./components/DiaryPage";
 import Register from "./components/Register";
-import Record from "./components/Record";
+
 import "./App.css";
 
 function App() {

@@ -1,0 +1,53 @@
+.diaryForm {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.title {
+  position: absolute;
+  width: 400px;
+  height: 30px;
+  border: 1px solid gray;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.content {
+  position: absolute;
+  margin-top: 60px;
+  width: 400px;
+  height: 380px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 14px;
+}
+
+.button {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  margin-top: 480px;
+  border: 1px solid #6fffc4;
+  background-color: #6fffc4;
+  color: gray;
+  border-radius: 14px;
+}
+
+.button:hover {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  margin-top: 480px;
+  border: 1px solid #6fffc4;
+  background-color: white;
+  color: gray;
+  border-radius: 14px;
+}
+
+.post {
+  width: 300px;
+}

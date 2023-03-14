@@ -12,12 +12,13 @@ function CarePage() {
       <div>
         <MainPage />
       </div>
-      <div>
-        <CalendarComponent />
-      </div>
-      <div>
-        --------------주요수치-------------
-        <Record />
+      <div className={styles.carePage}>
+        <div>
+          <CalendarComponent />
+        </div>
+        <div>
+          <Record />
+        </div>
       </div>
     </>
   );
