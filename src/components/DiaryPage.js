@@ -7,28 +7,34 @@ import {
   query,
   onSnapshot,
   orderBy,
+  getDocs,
+  serverTimestamp,
 } from "firebase/firestore";
 
 import MainPage from "./MainPage";
 
-function DiaryPage({ userObj }) {
+function DiaryPage() {
   const [title, setTitle] = useState();
-  const [getTitle, setGetTitle] = useState([]);
+  const [titles, setTitles] = useState([]);
 
-  useEffect(() => {
+  const getDiary = async () => {
     const q = query(
       collection(dbService, "dailymung-diary"),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "asc")
     );
-    onSnapshot(q, (snapshot) => {
-      const diaryArr = snapshot.docs.map((doc) => ({
-        id: doc.id,
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const titleObj = {
         ...doc.data(),
-      }));
-      // setGetTitle(diaryArr);
-      console.log(diaryArr);
+        id: doc.id,
+      };
+      setTitles((prev) => [titleObj, ...prev]);
     });
-  });
+  };
+
+  useEffect(() => {
+    getDiary();
+  }, []);
 
   const onTitleChange = (e) => {
     e.preventDefault();
@@ -37,9 +43,18 @@ function DiaryPage({ userObj }) {
 
   const onDiarySubmit = async (e) => {
     e.preventDefault();
-    await addDoc(collection(dbService, "dailymung-diary"), {
+    let newTitle = await addDoc(collection(dbService, "dailymung-diary"), {
       title,
+      createdAt: serverTimestamp(),
     });
+    console.log(newTitle);
+    setTitles((prev) => [
+      {
+        title: title,
+        id: newTitle.id,
+      },
+      ...prev,
+    ]);
   };
 
   return (
@@ -51,16 +66,19 @@ function DiaryPage({ userObj }) {
         <input
           className={styles.title}
           type="text"
-          placeholder="Title"
+          value={title}
+          placeholder="What's on your mind?"
           onChange={onTitleChange}
         ></input>
 
-        <input className={styles.button} type="submit" value="Submit"></input>
+        <input className={styles.button} type="button" value="►"></input>
       </form>
 
-      <div>
-        {getTitle.map((title) => (
-          <h4>{title}</h4>
+      <div className={styles.post}>
+        {titles.map((title) => (
+          <div key={title.id}>
+            <h4>{title.title}</h4>
+          </div>
         ))}
       </div>
     </>
