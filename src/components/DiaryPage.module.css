@@ -15,25 +15,14 @@
   padding: 14px;
 }
 
-.content {
-  position: absolute;
-  margin-top: 60px;
-  width: 400px;
-  height: 380px;
-  border: 1px solid gray;
-  border-radius: 8px;
-  box-sizing: border-box;
-  padding: 14px;
-}
-
 .button {
   position: absolute;
-  width: 100px;
+  width: 36px;
   height: 30px;
-  margin-top: 480px;
+  margin-left: 302px;
   border: 1px solid #6fffc4;
   background-color: #6fffc4;
-  color: gray;
+  color: rgb(77, 75, 75);
   border-radius: 14px;
 }
 
@@ -49,5 +38,13 @@
 }
 
 .post {
-  width: 300px;
+  position: absolute;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 300px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgb(96, 95, 95);
+  text-decoration: underline;
 }

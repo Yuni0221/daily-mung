@@ -7,10 +7,11 @@ import Home from "./components/Home";
 import CarePage from "./components/CarePage";
 import DiaryPage from "./components/DiaryPage";
 import Register from "./components/Register";
+import Profile from "./components/Profile";
 
 import "./App.css";
 
-function App() {
+function App({ userObj }) {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegist, setIsRegist] = useState(false);
