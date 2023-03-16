@@ -7,17 +7,18 @@ import { ref, uploadString } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
-  const [gender, setGender] = useState("");
+function Register({ userObj }) {
   const [newUser, setNewUser] = useState(true);
   const [attachment, setAttachment] = useState("");
   const [name, setName] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [gender, setGender] = useState("");
+  const [birthday, setBirthday] = useState(new Date());
 
   const navigate = useNavigate();
 
   const onChangeName = ({ target: { value } }) => {
     setName(value);
+    console.log(value);
   };
 
   const onClickRadioButton = (e) => {
@@ -26,8 +27,8 @@ function Register() {
   };
 
   const onClickBirthday = (e) => {
-    setBirthday(e.target.value);
-    console.log(e.target.value);
+    setBirthday(new Date());
+    console.log(birthday);
   };
 
   const onFileChange = (e) => {
@@ -47,6 +48,12 @@ function Register() {
 
   const onSubmitRegist = async (e) => {
     e.preventDefault();
+
+    console.log(attachment);
+    if (attachment == null || attachment === "") {
+      return alert("이미지를 등록해 주세요.");
+    }
+
     const fileRef = ref(storage, `${uuidv4()}`);
     const response = await uploadString(fileRef, attachment, "data_url");
     console.log(response);
@@ -69,16 +76,23 @@ function Register() {
           <div>
             <img className={styles.image} src={attachment} alt="img" />
           </div>
+          <div className={styles.title}>
+            "Choose the cutest moment"
+            <br />▼
+          </div>
+
           <div>
             <input
               id="images"
-              className={styles.fileUpload}
+              className={styles.fileButton}
               name="photo"
               type="file"
               accept="image/*"
               onChange={onFileChange}
             ></input>
+            {/* <span>{`message:`}</span> */}
           </div>
+
           <div>
             <input
               className={styles.name}
@@ -112,6 +126,8 @@ function Register() {
           </div>
           <div>
             <DatePickerComponent
+              input
+              type="date"
               value={birthday}
               onChange={onClickBirthday}
               required
