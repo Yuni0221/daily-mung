@@ -13,10 +13,10 @@ function CarePage() {
         <MainPage />
       </div>
       <div className={styles.carePage}>
-        <div>
+        <div className={styles.calendar}>
           <CalendarComponent />
         </div>
-        <div>
+        <div className={styles.record}>
           <Record />
         </div>
       </div>
