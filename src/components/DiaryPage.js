@@ -5,17 +5,40 @@ import {
   collection,
   addDoc,
   query,
-  onSnapshot,
   orderBy,
   getDocs,
   serverTimestamp,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 import MainPage from "./MainPage";
+import { uuidv4 } from "@firebase/util";
 
 function DiaryPage() {
   const [title, setTitle] = useState();
   const [titles, setTitles] = useState([]);
+
+  const onTitleChange = (e) => {
+    e.preventDefault();
+    setTitle(e.target.value);
+  };
+
+  const onDiarySubmit = async (e) => {
+    e.preventDefault();
+    let newTitle = await addDoc(collection(dbService, "dailymung-diary"), {
+      title,
+      createdAt: serverTimestamp(),
+    });
+
+    setTitles((prev) => [
+      {
+        title: title,
+        id: newTitle.id,
+      },
+      ...prev,
+    ]);
+  };
 
   const getDiary = async () => {
     const q = query(
@@ -36,42 +59,28 @@ function DiaryPage() {
     getDiary();
   }, []);
 
-  const onTitleChange = (e) => {
-    e.preventDefault();
-    setTitle(e.target.value);
-  };
-
-  const onDiarySubmit = async (e) => {
-    e.preventDefault();
-    let newTitle = await addDoc(collection(dbService, "dailymung-diary"), {
-      title,
-      createdAt: serverTimestamp(),
-    });
-    console.log(newTitle);
-    setTitles((prev) => [
-      {
-        title: title,
-        id: newTitle.id,
-      },
-      ...prev,
-    ]);
-  };
-
+  // const onDeleteClick = async () => {
+  //   const ok = window.confirm("Are you sure you want to delte?");
+  //   const deleteDiary = doc(dbService, "dailymung-diary");
+  //   if (ok) {
+  //     await deleteDoc(deleteDiary);
+  //   }
+  // };
   return (
     <>
       <div>
         <MainPage />
       </div>
+      <h3 className={styles.maintitle}>Record your today</h3>
       <form className={styles.diaryForm} onSubmit={onDiarySubmit}>
         <input
           className={styles.title}
           type="text"
-          value={title}
           placeholder="What's on your mind?"
           onChange={onTitleChange}
         ></input>
 
-        <input className={styles.button} type="button" value="►"></input>
+        <input className={styles.button} value="►" type="button"></input>
       </form>
 
       <div className={styles.post}>
