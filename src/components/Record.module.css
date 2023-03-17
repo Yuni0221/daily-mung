@@ -6,10 +6,73 @@
   text-align: center;
 }
 
+.form {
+  width: 300px;
+  height: 330px;
+  border: 1px solid gray;
+  border-radius: 14px;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 4px;
+  color: rgb(58, 57, 57);
+}
+
+.weight {
+  width: 100px;
+  border: 0.8px solid #6fffc4;
+  border-radius: 14px;
+  margin-bottom: 30px;
+}
+
+.meal {
+  width: 100px;
+  border: 0.8px solid #6fffc4;
+  border-radius: 14px;
+  margin-bottom: 30px;
+}
+
 .rangeValue {
   display: inline-block;
   position: relative;
   width: 50px;
   height: 10px;
   text-align: center;
+  margin-bottom: 40px;
+}
+
+.button {
+  margin-top: 10px;
+  border: 1px solid #6fffc4;
+  border-radius: 10px;
+  margin-left: 6px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.button:hover {
+  margin-top: 10px;
+  border: 1px solid #6fffc4;
+  border-radius: 10px;
+  margin-left: 6px;
+  background-color: #6fffc4;
+}
+
+.submit {
+  width: 100px;
+  border: 1px solid #6fffc4;
+  border-radius: 14px;
+  background-color: white;
+  margin-top: 20px;
+}
+
+.submit:hover {
+  width: 100px;
+  border: 1px solid #6fffc4;
+  border-radius: 14px;
+  background-color: #6fffc4;
+  margin-top: 20px;
 }

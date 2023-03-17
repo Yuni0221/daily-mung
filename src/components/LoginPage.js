@@ -30,6 +30,7 @@ function LoginPage() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
     try {
       let data;
       if (newAccount) {
@@ -45,7 +46,6 @@ function LoginPage() {
     } catch (error) {
       console.log(error);
     }
-
     if (password !== confirmPassword) {
       return alert("비밀번호가 일치하지 않습니다.");
     } else {

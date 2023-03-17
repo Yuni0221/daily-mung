@@ -42,7 +42,7 @@ function Record() {
   };
 
   const onSubmitRecord = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     await addDoc(collection(dbService, "dailymung-record"), {
       weight,
       meal,
@@ -54,8 +54,9 @@ function Record() {
     <>
       <div className={styles.cotainer}>
         <form className={styles.form} onSubmit={onSubmitRecord}>
-          <div>Record the weight</div>
+          <div className={styles.title}>Record the weight</div>
           <input
+            className={styles.weight}
             name="weight"
             type="number"
             step="0.01"
@@ -63,10 +64,14 @@ function Record() {
             onChange={onWeightChange}
           ></input>
           <span> kg</span>
-          <div>How much did you ate?</div>
-          <input type="number" onChange={onMealChange}></input>
+          <div className={styles.title}>How much did you ate?</div>
+          <input
+            className={styles.meal}
+            type="number"
+            onChange={onMealChange}
+          ></input>
           <span> times</span>
-          <div>How much did you drink?</div>
+          <div className={styles.title}>How much did you drink?</div>
           <input
             type="range"
             min={MIN}
@@ -77,23 +82,36 @@ function Record() {
           ></input>
           <span className={styles.rangeValue}>{`${drink}ml`}</span>
           <div>
-            <div>Record the walk time</div>
+            <div className={styles.title}>Record the walk time</div>
             <div>
               <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
               <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
               <span>{("0" + Math.floor((time / 10) % 100)).slice(-2)}</span>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={() => setRunning(true)}
+              >
+                start
+              </button>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={() => setRunning(false)}
+              >
+                stop
+              </button>
             </div>
-            <button type="button" onClick={() => setRunning(true)}>
-              start
-            </button>
-            <button type="button" onClick={() => setRunning(false)}>
-              stop
-            </button>
           </div>
           <div>
-            <input type="submit" value="기록하기"></input>
+            <input
+              className={styles.submit}
+              type="submit"
+              value="기록하기"
+            ></input>
           </div>
         </form>
+
         <></>
       </div>
     </>

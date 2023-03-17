@@ -4,6 +4,14 @@
   display: flex;
   position: absolute;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 200px;
+}
+
+.calendar {
+  padding: 20px;
+}
+
+.record {
+  padding: 20px;
 }

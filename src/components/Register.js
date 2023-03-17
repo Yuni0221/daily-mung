@@ -12,7 +12,7 @@ function Register({ userObj }) {
   const [attachment, setAttachment] = useState("");
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
-  const [birthday, setBirthday] = useState(new Date());
+  const [birthday, setBirthday] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function Register({ userObj }) {
   };
 
   const onClickBirthday = (e) => {
-    setBirthday(new Date());
+    setBirthday(e.target.value);
     console.log(birthday);
   };
 
@@ -49,7 +49,6 @@ function Register({ userObj }) {
   const onSubmitRegist = async (e) => {
     e.preventDefault();
 
-    console.log(attachment);
     if (attachment == null || attachment === "") {
       return alert("이미지를 등록해 주세요.");
     }

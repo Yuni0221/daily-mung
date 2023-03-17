@@ -3,7 +3,6 @@ import styles from "./Profile.module.css";
 import { updatedProfile } from "firebase/auth";
 
 function Profile() {
-  return <div></div>;
+  return <></>;
 }
-
 export default Profile;
